@@ -10,6 +10,10 @@ type WorkOrder struct {
 	rawYardLength, rawYardWidth, rawYardDrop float64
 }
 
+type FractionWorkOrder struct {
+	formattedLength, formattedWidth string
+}
+
 type CustomerWorkOrder struct {
 	rawYardLength, rawYardWidth, rawYardDrop float64
 }

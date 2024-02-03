@@ -5,6 +5,7 @@ import "fmt"
 func main() {
 	var table Table
 	var workOrder WorkOrder
+	var fractionWorkOrder FractionWorkOrder
 	var customerWorkOrder CustomerWorkOrder
 
 	fmt.Println("Fabric Calculation Tool")
@@ -14,6 +15,9 @@ func main() {
 
 	workOrder = metricToYards(table)
 	printWorkOrder(workOrder)
+
+	fractionWorkOrder = convertYardageToFraction(workOrder)
+	printFractionWorkOrder(fractionWorkOrder)
 
 	customerWorkOrder = CustomerWorkOrder{
 		rawYardLength: workOrder.rawYardLength,

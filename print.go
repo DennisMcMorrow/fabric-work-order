@@ -19,6 +19,12 @@ func printWorkOrder(workOrder WorkOrder) {
 	fmt.Println("Drop: ", workOrder.rawYardDrop)
 }
 
+func printFractionWorkOrder(fractionworkOrder FractionWorkOrder) {
+	fmt.Println("Fraction WORK ORDER")
+	fmt.Println("Length: ", fractionworkOrder.formattedLength)
+	fmt.Println("Width: ", fractionworkOrder.formattedWidth)
+}
+
 func printCustomerWorkOrder(customerWorkOrder CustomerWorkOrder) {
 	fmt.Println("CUSTOMER WORK ORDER")
 	fmt.Println("Length: ", customerWorkOrder.rawYardLength)

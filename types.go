@@ -2,7 +2,7 @@ package main
 
 type Table struct {
 	customerLength, customerWidth, customerDrop float64
-	metric                                      string
+	metric, materialName                        string
 	hem, surge                                  bool
 }
 
@@ -16,4 +16,11 @@ type FractionWorkOrder struct {
 
 type CustomerWorkOrder struct {
 	rawYardLength, rawYardWidth, rawYardDrop float64
+}
+
+type FabricRoll struct {
+	MaterialName string
+	Width        float64
+	Hemmed       bool
+	Surged       bool
 }

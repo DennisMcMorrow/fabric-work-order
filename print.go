@@ -8,6 +8,7 @@ func printTableDimensions(table Table) {
 	fmt.Println("Width: ", table.customerWidth)
 	fmt.Println("Drop: ", table.customerDrop)
 	fmt.Println("Metric: ", table.metric)
+	fmt.Println("Material: ", table.materialName)
 	fmt.Println("Hem: ", table.hem)
 	fmt.Println("Surge: ", table.surge)
 }

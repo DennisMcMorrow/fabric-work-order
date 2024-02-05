@@ -7,6 +7,7 @@ func getTableDimensions(table Table) Table {
 	table.customerWidth = getWidth()
 	table.customerDrop = getDrop()
 	table.metric = getMetric()
+	table.materialName = getMaterialName()
 	table.hem = getHem()
 	table.surge = getSurge()
 
@@ -32,6 +33,13 @@ func getDrop() float64 {
 	fmt.Print("Enter drop: ")
 	fmt.Scanln(&customerDrop)
 	return customerDrop
+}
+
+func getMaterialName() string {
+	var materialName string
+	fmt.Print("Enter Material Name (Velvet, Silk, Cotton, Linen, Polyester, etc): ")
+	fmt.Scanln(&materialName)
+	return materialName
 }
 
 func getMetric() string {

@@ -13,6 +13,7 @@ func metricToYards(table Table) WorkOrder {
 	rawYardDrop := table.customerDrop * unitsUsed
 	hem := checkIfHemNeeded(table.hem)
 	surge := checkIfSurgeNeeded(table.surge)
+	tableFabricLengthInches := table.customerLength + (rawYardDrop * 2)
 
 	workOrder := WorkOrder{
 		rawYardLength: ((table.customerLength * unitsUsed) + hem + surge) + (rawYardDrop * 2),
@@ -20,26 +21,43 @@ func metricToYards(table Table) WorkOrder {
 		rawYardDrop:   rawYardDrop,
 	}
 
+	if checkRotate(tableFabricLengthInches, getRollWidth(table.materialName)) { // if the end fabric length is equal to the width of the fabric roll width then swap length and width values
+		temp := workOrder.rawYardLength
+		workOrder.rawYardLength = workOrder.rawYardWidth
+		workOrder.rawYardWidth = temp
+	}
+
 	return workOrder
 }
 
 func getMetricValue(metric string) float64 {
 	var unitsUsed float64
-	if metric == "in" {
+	if metric == "yd" || metric == "yards" {
+		return unitsUsed
+	} else if metric == "in" || metric == "inches" {
 		unitsUsed = inchesConversionValue
-	} else if metric == "ft" {
+	} else if metric == "ft" || metric == "feet" {
 		unitsUsed = feetConversionValue
-	} else if metric == "m" {
+	} else if metric == "m" || metric == "meters" {
 		unitsUsed = metersConversionValue
-	} else if metric == "cm" {
+	} else if metric == "cm" || metric == "centimeters" {
 		unitsUsed = centimetersConversionValue
-	} else if metric == "mm" {
+	} else if metric == "mm" || metric == "millimeters" {
 		unitsUsed = millimetersConversionValue
 	} else {
 		fmt.Println("Metric not defined")
 	}
 
 	return unitsUsed
+}
+
+func getRollWidth(material string) float64 {
+	if roll, ok := FabricRolls[material]; ok {
+		return roll.Width
+	} else {
+		fmt.Println("Material not found:", material)
+	}
+	return 0
 }
 
 func convertYardageToFraction(workOrder WorkOrder) FractionWorkOrder {

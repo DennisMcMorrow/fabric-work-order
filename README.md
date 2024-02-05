@@ -35,7 +35,7 @@ Drop = length of the drop off the object
 
 We can use a database management system to manage the data for all the fabrics and their certain fields, field examples are this:
 FABRIC NAME = STRING (Velvet, silk, etc)
-ROLL SIZE = INT (54", 110", etc)
+ROLL SIZE = INT (54", 72", 110", etc) (velvet, silk, no pattern then use the length as a width and the width as a length in the work order)
 AMOUNT REMAINING = INT (all rolls start at a certain amount of yardage/roll)
 HEM NEEDED = BOOLEAN (material dependent, if true then hemp needed else hemp not needed)
 SURGE NEEDED = BOOLEAN (material dependent, if true then hemp needed else hemp not needed)

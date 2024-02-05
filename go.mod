@@ -1,3 +1,3 @@
-module github.com/DennisMcMorrow/farbric-work-order
+module github.com/DennisMcMorrow/fabric-work-order
 
 go 1.17

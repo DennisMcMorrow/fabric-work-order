@@ -16,7 +16,7 @@ func metricToYards(table Table) WorkOrder {
 
 	workOrder := WorkOrder{
 		rawYardLength: ((table.customerLength * unitsUsed) + hem + surge) + (rawYardDrop * 2),
-		rawYardWidth:  ((table.customerWidth * unitsUsed) + hem + surge) + (rawYardDrop * 2),
+		rawYardWidth:  (table.customerWidth * unitsUsed) + (rawYardDrop * 2),
 		rawYardDrop:   rawYardDrop,
 	}
 
@@ -62,11 +62,11 @@ func convertYardageToFraction(workOrder WorkOrder) FractionWorkOrder {
 
 func getLengthFraction(decimalPart float64) string {
 	switch {
+	case decimalPart <= 0.001:
+		return " "
 	case decimalPart <= 0.125:
 		return " 1/8"
-	case decimalPart <= 0.17:
-		return " 1/6"
-	case decimalPart <= 0.25:
+	case decimalPart > 0.125 && decimalPart <= 0.25:
 		return " 1/4"
 	case decimalPart <= 0.33:
 		return " 1/3"
@@ -80,9 +80,7 @@ func getLengthFraction(decimalPart float64) string {
 		return " 2/3"
 	case decimalPart <= 0.75:
 		return " 3/4"
-	case decimalPart <= 0.83:
-		return " 5/6"
-	case decimalPart <= 0.875:
+	case decimalPart > 0.75 && decimalPart <= 0.875:
 		return " 7/8"
 	default:
 		return " +1" // Indicate rounding up to the next whole number

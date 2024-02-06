@@ -13,7 +13,7 @@ func metricToYards(table Table) WorkOrder {
 	rawYardDrop := table.customerDrop * unitsUsed
 	hem := checkIfHemNeeded(table.hem)
 	surge := checkIfSurgeNeeded(table.surge)
-	tableFabricLengthInches := table.customerLength + (rawYardDrop * 2)
+	tableFabricLengthInches := table.customerLength + (table.customerDrop * 2)
 
 	workOrder := WorkOrder{
 		rawYardLength: ((table.customerLength * unitsUsed) + hem + surge) + (rawYardDrop * 2),
@@ -21,10 +21,14 @@ func metricToYards(table Table) WorkOrder {
 		rawYardDrop:   rawYardDrop,
 	}
 
+	fmt.Println(tableFabricLengthInches)
+	fmt.Println(getRollWidth(table.materialName))
+
 	if checkRotate(tableFabricLengthInches, getRollWidth(table.materialName)) { // if the end fabric length is equal to the width of the fabric roll width then swap length and width values
 		temp := workOrder.rawYardLength
 		workOrder.rawYardLength = workOrder.rawYardWidth
 		workOrder.rawYardWidth = temp
+		fmt.Println("rotate found")
 	}
 
 	return workOrder
@@ -69,6 +73,16 @@ func convertYardageToFraction(workOrder WorkOrder) FractionWorkOrder {
 
 	lengthFraction := getLengthFraction(lengthDecimalPart)
 	widthFraction := getWidthFraction(widthDecimalPart)
+
+	if lengthFraction == " +1" {
+		length++
+		lengthFraction = ""
+	}
+
+	if widthFraction == " +1" {
+		width++
+		widthFraction = ""
+	}
 
 	fractionWorkOrder := FractionWorkOrder{
 		formattedLength: fmt.Sprintf("%d%s", length, lengthFraction),

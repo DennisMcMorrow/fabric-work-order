@@ -1,44 +1,49 @@
-Fabric Work Order Project
-
-Technologies Used:
-Programming Language: Golang
-APIS: External API Interaction/RESTful API
-Containers: Docker/Kubernetes
-DBMS: PostgreSQL
-Cloud Service: AWS CLI, AWS Console, S3
-Implement: Data Structures, Design Patterns, Network Protocols
-CI/CD Environment: Jenkins, GitLab CI
-NoSQL/Big Data Technologies: Hadoop, HBase, Cassandra, MongoDB
+# Fabric Work Order Project
+A project designed to handle work orders for fabric, providing necessary calculations and data management.
 
 
-Program Functionality:
-User will be able to measurement information into the GUI and be able to select radio buttons and selectors to meet the criteria of what is being asked for from the customer
-
-For example, customer walks in to get a specific type of fabric and will provide the employee with length, width, and drop they are looking for in the fabric.
-Employee will then plug in these values into the GUI and be given the correct calculations needed for the work order.
-Customers relay this information most of the time in inches, feet, or even meters. 
-We must calculate this information and give the yardage back in two different forms, form1 = work order measurement and form2 = measurements given to the customer
-
-There are certain terminologies needed to be understood-
-Hem = 1 OR 2 inch tuck for fabric to be stitched (material dependent) (1/2 inch all around)
-Surge = 1 OR 2 inch tuck for fabric to be stitched (material dependent) (not offered most of the time)
-Round = table (l + (drop x 2))
-Lever = expandable table
-Double = means to use 2 rolls
-Trim = around a round table possibly applied to regular tables too
-Square = type of table
-rotate = turn fabric width becomes length
-
-Width = width of the object
-Length = length of the object
-Drop = length of the drop off the object
-
-We can use a database management system to manage the data for all the fabrics and their certain fields, field examples are this:
-FABRIC NAME = STRING (Velvet, silk, etc)
-ROLL SIZE = INT (54", 72", 110", etc) (velvet, silk, no pattern then use the length as a width and the width as a length in the work order)
-AMOUNT REMAINING = INT (all rolls start at a certain amount of yardage/roll)
-HEM NEEDED = BOOLEAN (material dependent, if true then hemp needed else hemp not needed)
-SURGE NEEDED = BOOLEAN (material dependent, if true then hemp needed else hemp not needed)
+## Features
+- Input measurement information into the GUI
+- Select radio buttons and selectors to meet customer criteria
+- Calculate and provide yardage in work order and customer formats
+- Manage fabric data with a DBMS
 
 
+## Terminologies
+- Hem: 1 or 2 inch tuck for fabric stitching
+- Surge: 1 or 2 inch tuck for fabric stitching (rarely offered)
+- Round: Calculation for a round table (length + (drop x 2))
+- Lever: Expandable table
+- Double: Use of 2 rolls
+- Trim: Applied around round tables, possibly regular tables too
+- Square: Type of table
+- Rotate: Turning fabric width becomes length
 
+
+## Technology
+- Programming Language: Golang
+- APIs: External API Interaction/RESTful API
+- Containers: Docker, Kubernetes
+- DBMS: PostgreSQL
+- Cloud Service: AWS CLI, AWS Console, S3
+- Implementation: Data Structures, Design Patterns, Network Protocols
+- CI/CD Environment: Jenkins, GitLab CI
+- NoSQL/Big Data Technologies: Hadoop, HBase, Cassandra, MongoDB
+
+
+## Database Management
+- Fabric Name: STRING (e.g., Velvet, Silk)
+- Roll Size: INT (e.g., 54", 72", 110")
+- Amount Remaining: INT (Initial yardage per roll)
+- Hem Needed: BOOLEAN (Material dependent)
+- Surge Needed: BOOLEAN (Material dependent)
+
+
+## Program Functionality
+- Employees input fabric measurements (length, width, drop)
+- GUI calculates necessary yardage for work orders
+- Handles measurements in inches, feet, or meters
+- Outputs yardage in two formats: work order and customer measurement
+
+
+For more details, visit the [GitHub repository](https://github.com/DennisMcMorrow/fabric-work-order).

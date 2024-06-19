@@ -22,14 +22,6 @@ A project designed to handle work orders for fabric, providing necessary calcula
 
 ## Technology
 - Programming Language: Golang
-- APIs: External API Interaction/RESTful API
-- Containers: Docker, Kubernetes
-- DBMS: PostgreSQL
-- Cloud Service: AWS CLI, AWS Console, S3
-- Implementation: Data Structures, Design Patterns, Network Protocols
-- CI/CD Environment: Jenkins, GitLab CI
-- NoSQL/Big Data Technologies: Hadoop, HBase, Cassandra, MongoDB
-
 
 ## Database Management
 - Fabric Name: STRING (e.g., Velvet, Silk)
